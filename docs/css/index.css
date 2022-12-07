@@ -183,6 +183,8 @@ input.input-uncertainty {
   top: 190px;
   width: 100%;
   position: absolute;
+}
+#hoh-chart {
   pointer-events: none;
 }
 #toggle-wrapper {
@@ -220,19 +222,19 @@ rect {
 }
 
 .fefefe rect {
-  fill: #fefefe;
+  fill: #fefefe22;
 }
 .fdfdfd rect {
-  fill: #fdfdfd;
+  fill: #fdfdfd22;
 }
 .fcfcfc rect {
-  fill: #fcfcfc;
+  fill: #fcfcfc22;
 }
 .fbfbfb rect {
-  fill: #fbfbfb;
+  fill: #fbfbfb22;
 }
 .fafafa rect {
-  fill: #fafafa;
+  fill: #fafafa22;
 }
 .A0D0E0 rect {
   fill: #a0d0e0;

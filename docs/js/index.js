@@ -38,23 +38,24 @@ A.inputs.forEach((x, xi) => {
   div.innerHTML = `
     <label class="label-${x.class}">${xi + 1}. ${x.label}</label>
 
-    <button class="plus fas fa-angle-up"></button>
+    <span class="plus translate-y-1">⌃</span>
 
-    <input id="${x.id}" class="${x.class}" step="${x.step}" data-format="${x[
-    'data-format'
-  ] || ''}" name="quantity" value="${x.value}" type="${x.type}">
+    <input id="${x.id}" class="${x.class}" step="${x.step}" data-format="${
+    x['data-format'] || ''
+  }" name="quantity" value="${x.value}" type="${x.type}">
 
-    <button class="minus fas fa-angle-down"></i></button>
+    <span class="minus inline-flex rotate-180">⌃</span>
 
     <label class="label-plus-minus">±</label>
     <input id="uncertainty-${x.id}" class="input-uncertainty" step="${
     x.step
-  }" data-format="${x['data-format'] ||
-    ''}" name="uncertainty" value="${numeral(x.step).format(
+  }" data-format="${
+    x['data-format'] || ''
+  }" name="uncertainty" value="${numeral(x.step).format(
     x['data-format']
   )}" type="${x.type}">
 
-    <input type="checkbox" ${x['check-uncertainty'] ? 'checked' : ''}/>
+    <input type="checkbox" ${x['check-uncertainty'] ? 'checked' : 'disabled'}/>
 
   `
 
@@ -361,7 +362,7 @@ function createMonthlySums() {
           neg_Loan_Interest: Math.round(A.runningTotalInterest),
           neg_Property_Tax: A.qumePropertyTax,
           neg_Insurance: A.qumeInsurance,
-          'neg_Maintenance_/_Improvements': A.qumeMaintenance
+          'neg_Maintenance_/_Improvements': A.qumeMaintenance,
         })
 
         A.chartData.sceneB.push({
@@ -382,7 +383,7 @@ function createMonthlySums() {
             A.CPPY
           ),
           // "neg_Rent": A.inputRent,
-          neg_Rent: A.qumeRent
+          neg_Rent: A.qumeRent,
         })
 
         console.log(thisMonthsDiff)
@@ -414,28 +415,28 @@ function writeFinalOutputs() {
       label: 'Down Payment',
       step: 1,
       type: 'text',
-      value: numeral(A.downPayment).format()
+      value: numeral(A.downPayment).format(),
     },
     {
       class: 'hmh-output',
       label: 'Closing Cost',
       step: 1,
       type: 'text',
-      value: numeral(A.inputClosingCostRate * A.inputHousePrice).format()
+      value: numeral(A.inputClosingCostRate * A.inputHousePrice).format(),
     },
     {
       class: 'hmh-output',
       label: 'Monthly Payment',
       step: 1,
       type: 'text',
-      value: numeral(A.monthlyTotal_TaxInsMortPI).format()
+      value: numeral(A.monthlyTotal_TaxInsMortPI).format(),
     },
     {
       class: 'hmh-output',
       label: 'Price-to-Rent Ratio',
       step: 1,
       type: 'text',
-      value: numeral(A.inputHousePrice / (12 * A.inputRent)).format('0')
+      value: numeral(A.inputHousePrice / (12 * A.inputRent)).format('0'),
     },
     {
       class: 'hmh-output',
@@ -444,9 +445,9 @@ function writeFinalOutputs() {
       label: 'Home Value @30yr',
       step: 1,
       type: 'text',
-      value: numeral(Math.round(A.equity / 1000) * 1000).format()
+      value: numeral(Math.round(A.equity / 1000) * 1000).format(),
       //"value": numeral(A.equity).format(),
-    }
+    },
   ]
 
   A.outputs.sceneB = [
@@ -457,8 +458,8 @@ function writeFinalOutputs() {
       label: 'Investments @30yr',
       step: 1,
       type: 'text',
-      value: numeral(Math.round(A.invest / 1000) * 1000).format()
-    }
+      value: numeral(Math.round(A.invest / 1000) * 1000).format(),
+    },
   ]
 
   document.querySelector('#output-wrapper').innerHTML = ''
@@ -582,10 +583,12 @@ $3,192/mo: Principal & interest
 
 document.addEventListener(
   'click',
-  function(e) {
+  function (e) {
     // https://gomakethings.com/why-event-delegation-is-a-better-way-to-listen-for-events-in-vanilla-js/
 
-    if (e.target.matches('button.plus')) {
+    console.log('e.target', e.target)
+
+    if (e.target.matches('span.plus')) {
       // get the value, step, and format
       var input = e.target.parentNode.querySelector('input')
       var step = input.getAttribute('step')
@@ -597,7 +600,7 @@ document.addEventListener(
       calculateOutputs()
     }
 
-    if (e.target.matches('button.minus')) {
+    if (e.target.matches('span.minus')) {
       // get the value, step, and format
       var input = e.target.parentNode.querySelector('input')
       var step = input.getAttribute('step')
@@ -618,7 +621,7 @@ document.addEventListener(
 
 document.addEventListener(
   'input',
-  function(e) {
+  function (e) {
     if (e.target.matches('input.hmh-input')) {
       calculateOutputs()
     }

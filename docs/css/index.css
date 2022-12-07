@@ -1,5 +1,9 @@
 * {
   color: #555;
+  font-family: -apple-system, arial, sans-serif;
+  font-weight: light;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 body {
@@ -27,7 +31,6 @@ g.pos rect {
   }
 */
 
-
 /*
 html,
 body {
@@ -51,14 +54,13 @@ body {
 div#content {
   position: absolute;
   left: 30px;
-  top: 40px;
+  top: 140px;
 }
 
 .plus,
 .minus {
-  /*font-family: monospace;*/
-  font-family: 'Font Awesome 5 Free';
-  color: #999;
+  /* font-family: 'Font Awesome 5 Free'; */
+  color: #777;
   /*border-radius: 50%;*/
   border: 0;
   background: none;
@@ -104,7 +106,6 @@ input.input-uncertainty {
   width: 80px;
   padding: 0 5px;
 }
-
 
 .line,
 #data-a-line {
@@ -173,13 +174,15 @@ input.input-uncertainty {
   padding: 3px;
   color: #000;
   text-align: center;
-/*  bottom: 500px;
+  /*  bottom: 500px;
   right: 500px;*/
 }
 
 #div-for-svg-chart {
   border: 0px solid green;
+  top: 90px;
   width: 100%;
+  position: absolute;
 }
 #toggle-wrapper {
   position: absolute;
@@ -205,13 +208,13 @@ div#toggle-wrapper a.toggle-chart.active i {
   display: none;
 }
 
-
 /*.g-stack rect*/
 rect {
   /*transition: all 1.0s ease;*/
 }
 
-#data-a-stacked-bars, #data-b-stacked-bars {
+#data-a-stacked-bars,
+#data-b-stacked-bars {
   opacity: 0;
 }
 
@@ -231,19 +234,19 @@ rect {
   fill: #fafafa;
 }
 .A0D0E0 rect {
-  fill: #A0D0E0;
+  fill: #a0d0e0;
 }
 .AaDdEe rect {
-  fill: #AaDdEe;
+  fill: #aaddee;
 }
 .CBE1EE rect {
-  fill: #CBE1EE;
+  fill: #cbe1ee;
 }
 .FDA460 rect {
-  fill: #FDA460;
+  fill: #fda460;
 }
 .FDB279 rect {
-  fill: #FDB279;
+  fill: #fdb279;
 }
 
 .b6ddd7 rect {
@@ -254,10 +257,10 @@ rect {
   fill: #e3a270;
 }
 
-[class="pos 6ea8bb"] rect {
+[class='pos 6ea8bb'] rect {
   fill: #6ea8bb;
 }
-[class="pos 80cdc1"] rect {
+[class='pos 80cdc1'] rect {
   fill: #80cdc1;
 }
 
@@ -266,8 +269,47 @@ dark teal: 6ea8bb
 */
 
 #legend,
-#toltp { opacity: 0; }
+#toltp {
+  opacity: 0;
+}
 
 #input-wrapper div {
   padding-right: 7px;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+.translate-y-1 {
+  transform: translateY(0.35rem);
+}
+
+/* .align-middle {
+  vertical-align: middle;
+} */
+
+.flex {
+  display: flex;
+}
+.inline-flex {
+  display: inline-flex;
+}
+.items-center {
+  align-items: center;
+}
+.m-1 {
+  margin: 0.25rem; /* 4px */
+}
+.border {
+  border-width: 1px;
+}
+
+.border-b {
+  border-bottom-width: 1px;
+}
+.border-black {
+  border-color: #000;
+}
+.underline {
+  text-decoration-line: underline;
 }

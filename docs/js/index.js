@@ -587,6 +587,7 @@ document.addEventListener(
     // https://gomakethings.com/why-event-delegation-is-a-better-way-to-listen-for-events-in-vanilla-js/
 
     console.log('e.target', e.target)
+    console.log('e.target.matches("span.plus")', e.target.matches('span.plus'))
 
     if (e.target.matches('span.plus')) {
       // get the value, step, and format

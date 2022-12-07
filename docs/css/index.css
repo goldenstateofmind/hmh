@@ -180,9 +180,10 @@ input.input-uncertainty {
 
 #div-for-svg-chart {
   border: 0px solid green;
-  top: 90px;
+  top: 190px;
   width: 100%;
   position: absolute;
+  pointer-events: none;
 }
 #toggle-wrapper {
   position: absolute;
